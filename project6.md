@@ -9,4 +9,5 @@ I will be using RedHat OS
 
 **LAUNCH AN EC2 INSTANCE THAT WILL SERVE AS “WEB SERVER**
 
-![]()
+![webserver](./images/webserver.PNG)
+
