@@ -11,3 +11,12 @@ I will be using RedHat OS
 
 ![webserver](./images/webserver.PNG)
 
+**CREATING AND MOUNTING VOLUMES**
+
+Create 3 volumes in the same AZ as your Web Server EC2, each of 10 GiB.
+
+![Add_3_volumes](./images/create_volume.PNG)
+
+Attach all three volumes one by one to your Web Server EC2 instance
+
+
