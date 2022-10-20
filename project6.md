@@ -215,6 +215,8 @@ Restart Apache
 
 `sudo systemctl restart httpd`
 
+![Restart_Apache](./images/restart_apache.PNG)
+
 Download wordpress and copy wordpress to *var/www/html*
 
 ```
