@@ -44,7 +44,15 @@ Use *lsblk* utility to view the newly configured partition on each of the 3 disk
 
 Install *lvm2* package using *sudo yum install lvm2*. 
 
+`sudo yum install lvm2`
+
+![install_lvm2](./images/IInstall_lvm2.PNG)
+
 Run *sudo lvmdiskscan* command to check for available partitions.
+
+`sudo lvmdiskscan`
+
+![check_available_partition](./images/check_avail_partition2.PNG)
 
 **Note**: Previously, in Ubuntu we used *apt* command to install packages, in RedHat/CentOS a different package manager is used, so we shall use *yum* command instead.
 
@@ -81,4 +89,10 @@ sudo lvcreate -n logs-lv -L 14G webdata-vg
 Verify that your Logical Volume has been created successfully by running *sudo lvs*
 
 ![Verify_physical_volume](./images/verify_logical_volume.PNG)
+
+Verify the entire setup
+
+`sudo vgdisplay -v #view complete setup - VG, PV, and LV`
+
+`sudo lsblk `
 
