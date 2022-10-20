@@ -138,5 +138,27 @@ Restore log files back into **/var/log** directory
 
 Update */etc/fstab* file so that the mount configuration will persist after restart of the server.
 
+**UPDATE THE */ETC/FSTAB* FILE**
 
-**UPDATE THE `/ETC/FSTAB` FILE**
+The UUID of the device will be used to update the */etc/fstab* file;
+
+`sudo blkid`
+
+`sudo vi /etc/fstab`
+
+Update */etc/fstab* in this format using your own UUID and rememeber to remove the leading and ending quotes.
+
+![update_UUID](./images/update%20UUID.PNG)
+
+Test the configuration and reload the daemon
+
+```
+ sudo mount -a
+ sudo systemctl daemon-reload
+ ```
+
+ Verify your setup by running *df -h*, output must look like this
+
+ `df -h`
+
+ ![verify_setup](./images/verify_setup4.png)
