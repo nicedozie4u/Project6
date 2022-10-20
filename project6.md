@@ -162,3 +162,50 @@ Test the configuration and reload the daemon
  `df -h`
 
  ![verify_setup](./images/verify_setup4.png)
+
+
+ ## Prepare the Database Server
+
+ Launch a second RedHat EC2 instance that will have a role – ‘DB Server’
+ 
+ Repeat the same steps as for the Web Server, but instead of *apps-lv* create *db-lv* and mount it to */db* directory instead of */var/www/html/*.
+
+ ## Install WordPress on your Web Server EC2
+
+
+Update the repository
+
+`sudo yum -y update`
+
+![update_webserver](./images/update_webserver.PNG)
+
+Install wget, Apache and it’s dependencies
+
+`sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json`
+
+![install_Apache](./images/Insta_Apache%2Cwget%2Cjson.PNG)
+
+Start Apache
+
+```
+sudo systemctl enable httpd
+sudo systemctl start httpd
+```
+
+To install PHP and it’s depemdencies
+
+```
+sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+sudo yum install yum-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
+sudo yum module list php
+sudo yum module reset php
+sudo yum module enable php:remi-7.4
+sudo yum install php php-opcache php-gd php-curl php-mysqlnd
+sudo systemctl start php-fpm
+sudo systemctl enable php-fpm
+setsebool -P httpd_execmem 1
+```
+
+
+![enable_httpd](./images/install_PHP.PNG)
+
