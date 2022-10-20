@@ -192,6 +192,7 @@ Start Apache
 sudo systemctl enable httpd
 sudo systemctl start httpd
 ```
+![Start_Apache](./images/start_Apache.PNG)
 
 To install PHP and it’s depemdencies
 
