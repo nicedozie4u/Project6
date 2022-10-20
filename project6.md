@@ -272,3 +272,28 @@ exit
 ![Allow_port_3306](./images/allow_port_3306.PNG)
 
 
+Install MySQL client and test that you can connect from your Web Server to your DB server by using *mysql-client*
+
+```
+sudo yum install mysql
+sudo mysql -u admin -p -h <DB-Server-Private-IP-address>
+```
+
+![remote_login](./images/remote_DB_login2.PNG)
+
+Verify if you can successfully execute *SHOW DATABASES;* command and see a list of existing databases
+
+![remote_login](./images/test_command2.PNG)
+
+Change permissions and configuration so Apache could use WordPress
+
+Enable TCP port 80 in Inbound Rules configuration for your Web Server EC2 (enable from everywhere 0.0.0.0/0 or from your workstation’s IP)
+
+Try to access from your browser the link to your WordPress *http://<Web-Server-Public-IP-Address>/wordpress/*
+
+If you see this message – it means your WordPress has successfully connected to your remote MySQL database
+
+![remote_login](./images/wordpress.PNG)
+
+# Congratulations!
+
