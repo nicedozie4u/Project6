@@ -121,3 +121,22 @@ Mount **/var/www/html** on *apps-lv* logical volume
 
 `sudo mount /dev/webdata-vg/apps-lv /var/www/html/`
 
+Use *rsync* utility to backup all the files in the log directory **/var/log** into **/home/recovery/logs** (This is required before mounting the file system)
+
+`sudo rsync -av /var/log/. /home/recovery/logs/`
+
+![backup_files](./images/restore_log_files22.png)
+
+Mount **/var/log** on **logs-lv** logical volume. (Note that all the existing data on /var/log will be deleted. That is why step 15 above is very
+important)
+
+`sudo mount /dev/webdata-vg/logs-lv /var/log`
+
+Restore log files back into **/var/log** directory
+
+`sudo rsync -av /home/recovery/logs/. /var/log`
+
+Update */etc/fstab* file so that the mount configuration will persist after restart of the server.
+
+
+**UPDATE THE `/ETC/FSTAB` FILE**
