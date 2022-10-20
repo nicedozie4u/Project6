@@ -40,7 +40,9 @@ Use *gdisk* utility to create a single partition on each of the 3 disks
 
 Use *lsblk* utility to view the newly configured partition on each of the 3 disks
 
-![view_partition](./images/add_partition.PNG)
+![view_partition_](./images/add_partition.PNG)
+
+
 
 Install *lvm2* package using *sudo yum install lvm2*. 
 
