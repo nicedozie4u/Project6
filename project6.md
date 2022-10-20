@@ -209,3 +209,23 @@ setsebool -P httpd_execmem 1
 
 ![enable_httpd](./images/install_PHP.PNG)
 
+Restart Apache
+
+`sudo systemctl restart httpd`
+
+Download wordpress and copy wordpress to *var/www/html*
+
+```
+mkdir wordpress
+  cd   wordpress
+  sudo wget http://wordpress.org/latest.tar.gz
+  sudo tar xzvf latest.tar.gz
+  sudo rm -rf latest.tar.gz
+  cp wordpress/wp-config-sample.php wordpress/wp-config.php
+  cp -R wordpress /var/www/html/
+  ```
+
+![enable_httpd](./images/download_wordpress.PNG)  
+
+
+
