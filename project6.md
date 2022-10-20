@@ -46,7 +46,7 @@ Install *lvm2* package using *sudo yum install lvm2*.
 
 `sudo yum install lvm2`
 
-![install_lvm2](./images/IInstall_lvm2.PNG)
+![install_lvm2](./images/Install_lvm2.PNG)
 
 Run *sudo lvmdiskscan* command to check for available partitions.
 
@@ -97,4 +97,27 @@ Verify the entire setup
 `sudo vgdisplay -v #view complete setup - VG, PV, and LV`
 
 `sudo lsblk `
+
+![Verify_entire_setup](./images/verify_entire_setup.PNG)
+
+Use *mkfs.ext4* to format the logical volumes with *ext4* filesystem
+
+```
+sudo mkfs -t ext4 /dev/webdata-vg/apps-lv
+sudo mkfs -t ext4 /dev/webdata-vg/logs-lv
+```
+
+![format_logical_volume](./images/format_logical_volume.PNG)
+
+Create **/var/www/html** directory to store website files
+
+`sudo mkdir -p /var/www/html`
+
+Create **/home/recovery/logs** to store backup of log data
+
+`sudo mkdir -p /home/recovery/logs`
+
+Mount **/var/www/html** on *apps-lv* logical volume
+
+`sudo mount /dev/webdata-vg/apps-lv /var/www/html/`
 
