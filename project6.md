@@ -75,6 +75,8 @@ Use *vgcreate* utility to add all 3 PVs to a volume group (VG). Name the VG **we
 
 `sudo vgcreate webdata-vg /dev/xvdh1 /dev/xvdg1 /dev/xvdf1`
 
+![create_volume_group](./images/create_volume_group.PNG)
+
 Verify that your VG has been created successfully by running *sudo vgs*
 
 `sudo vgs`
