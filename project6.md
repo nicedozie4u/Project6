@@ -217,15 +217,58 @@ Download wordpress and copy wordpress to *var/www/html*
 
 ```
 mkdir wordpress
-  cd   wordpress
-  sudo wget http://wordpress.org/latest.tar.gz
-  sudo tar xzvf latest.tar.gz
-  sudo rm -rf latest.tar.gz
-  cp wordpress/wp-config-sample.php wordpress/wp-config.php
-  cp -R wordpress /var/www/html/
-  ```
+cd   wordpress
+sudo wget http://wordpress.org/latest.tar.gz
+sudo tar xzvf latest.tar.gz
+sudo rm -rf latest.tar.gz
+cp wordpress/wp-config-sample.php wordpress/wp-config.php
+cp -R wordpress /var/www/html/
+```
 
 ![enable_httpd](./images/download_wordpress.PNG)  
 
+Configure SELinux Policies
+
+```
+  sudo chown -R apache:apache /var/www/html/wordpress
+  sudo chcon -t httpd_sys_rw_content_t /var/www/html/wordpress -R
+  sudo setsebool -P httpd_can_network_connect=1
+```
+![Configure SELinux](./images/configure_SELinux_policy.PNG)  
+
+
+## Install MySQL on your DB Server EC2
+
+```
+sudo yum update
+sudo yum install mysql-server
+```
+
+![Install_Mysql](./images/install_Mysql2.PNG) 
+
+Verify that the service is up and running by using *sudo systemctl status mysqld*, if it is not running, restart the service and enable it so it will be running even after reboot
+
+
+![Install_Mysql](./images/restart%26enble_Mysql.PNG)
+
+## Configure DB to work with WordPress
+
+```
+sudo mysql
+CREATE DATABASE wordpress;
+CREATE USER `myuser`@`<Web-Server-Private-IP-Address>` IDENTIFIED BY 'mypass';
+GRANT ALL ON wordpress.* TO 'myuser'@'<Web-Server-Private-IP-Address>';
+FLUSH PRIVILEGES;
+SHOW DATABASES;
+exit
+```
+
+![create_user](./images/create_user2.PNG)
+
+## Configure WordPress to connect to remote database
+
+**Hint**: Do not forget to open MySQL port 3306 on DB Server EC2. For extra security, you shall allow access to the DB server **ONLY** from your Web Server’s IP address, so in the Inbound Rule configuration specify source as /32
+
+![Allow_port_3306](./images/allow_port_3306.PNG)
 
 
