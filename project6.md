@@ -156,6 +156,8 @@ Test the configuration and reload the daemon
  sudo mount -a
  sudo systemctl daemon-reload
  ```
+![reload_demon](./images/verify_setup_again.PNG)
+
 
  Verify your setup by running *df -h*, output must look like this
 
